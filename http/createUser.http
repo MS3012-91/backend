@@ -1,0 +1,12 @@
+#Check correct user - 201 {body}
+POST http://127.0.0.1:5000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Name",
+    "lastName": "Surname",
+    "email": "test10@maol.com",
+    "passwordHash": "qwerty",
+    "gender": "male",
+    "birtday": "10-10-1995"
+}
