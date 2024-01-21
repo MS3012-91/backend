@@ -1,14 +1,13 @@
 const _ = require("lodash");
-const { User } = require("../models");
+const { User } = require("../db/models");
 
 module.exports.createUser = async (req, res) => {
   const { body } = req;
   console.log("body", body);
   try {
     const createdUser = await User.create(body);
-    console.log("createdUser", createdUser);
     if (!createdUser) {
-      return res.status(500).send("Server error");
+      return res.status(500).send("User is not created");
     } else {
       const preparedUser = _.omit(createdUser.get(), [
         "passwordHash",
@@ -68,7 +67,6 @@ module.exports.updateUserById = async (req, res) => {
       raw: true,
       returning: true,
     });
-
     if (!updatedUser) {
       return res.status(404).send("User not found");
     }

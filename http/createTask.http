@@ -1,0 +1,23 @@
+POST http://127.0.0.1:5000/api/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+    "body": "Say Hello",
+    "isDone" : false,
+    "deadline": "2024-05-19T00:00:00.000Z"
+}
+
+POST http://127.0.0.1:5000/api/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+    "body": "Stand up"
+}
+
+POST http://127.0.0.1:5000/api/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+    "body": " ",
+    "deadline": "2024-01-19T00:00:00.000Z"
+}
