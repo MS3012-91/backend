@@ -3,9 +3,9 @@ POST http://127.0.0.1:5000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Mashaq",
+    "firstName": "Ggashaq",
     "lastName": "Surnameq",
-    "email": "test44@maol.com",
+    "email": "test41@maol.com",
     "passwordHash": "Abcdergg6!",
     "gender": "male",
     "birthday": "10.10.1996"

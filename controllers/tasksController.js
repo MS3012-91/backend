@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const { Task } = require("../db/models");
 
-module.exports.createTask = async (req, res) => {
+module.exports.createTask = async (req, res, next) => {
   const data = req.body;
   try {
     const createdTask = await Task.create(data);
@@ -11,7 +11,7 @@ module.exports.createTask = async (req, res) => {
     const preparedTask = _.omit(createdTask.get(), ["updatedAt"]);
     return res.status(201).send(preparedTask);
   } catch (err) {
-    return res.status(505).send("Server error");
+    next(err);
   }
 };
 
@@ -71,7 +71,7 @@ module.exports.updateTaskById = async (req, res) => {
   }
 };
 
-module.exports.deleteTaskById = async (req, res) => {
+module.exports.deleteTaskById = async (req, res, next) => {
   const { taskId } = req.params;
   try {
     const deletedTask = await Task.destroy({ where: { id: taskId } });
@@ -80,6 +80,6 @@ module.exports.deleteTaskById = async (req, res) => {
     }
     res.status(200).send("Task deleted");
   } catch (err) {
-    return res.status(505).send("Server error");
+    next(err);
   }
 };
